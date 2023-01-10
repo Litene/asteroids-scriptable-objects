@@ -2,37 +2,32 @@
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Asteroids
-{
-    public class AsteroidSpawner : MonoBehaviour
-    {
+namespace Asteroids {
+    public class AsteroidSpawner : MonoBehaviour { // pool all the astroids, and set max astroids on scene, set spawntimer, 
         [SerializeField] private Asteroid _asteroidPrefab;
         [SerializeField] private float _minSpawnTime;
         [SerializeField] private float _maxSpawnTime;
         [SerializeField] private int _minAmount;
         [SerializeField] private int _maxAmount;
-        
+
         private float _timer;
         private float _nextSpawnTime;
         private Camera _camera;
 
-        private enum SpawnLocation
-        {
+        private enum SpawnLocation {
             Top,
             Bottom,
             Left,
             Right
         }
 
-        private void Start()
-        {
+        private void Start() {
             _camera = Camera.main;
             Spawn();
             UpdateNextSpawnTime();
         }
 
-        private void Update()
-        {
+        private void Update() {
             UpdateTimer();
 
             if (!ShouldSpawn())
@@ -43,39 +38,32 @@ namespace Asteroids
             _timer = 0f;
         }
 
-        private void UpdateNextSpawnTime()
-        {
+        private void UpdateNextSpawnTime() {
             _nextSpawnTime = Random.Range(_minSpawnTime, _maxSpawnTime);
         }
 
-        private void UpdateTimer()
-        {
+        private void UpdateTimer() {
             _timer += Time.deltaTime;
         }
 
-        private bool ShouldSpawn()
-        {
+        private bool ShouldSpawn() {
             return _timer >= _nextSpawnTime;
         }
 
-        private void Spawn()
-        {
+        private void Spawn() {
             var amount = Random.Range(_minAmount, _maxAmount + 1);
-            
-            for (var i = 0; i < amount; i++)
-            {
+
+            for (var i = 0; i < amount; i++) {
                 var location = GetSpawnLocation();
                 var position = GetStartPosition(location);
                 Instantiate(_asteroidPrefab, position, Quaternion.identity);
             }
         }
 
-        private static SpawnLocation GetSpawnLocation()
-        {
+        private static SpawnLocation GetSpawnLocation() {
             var roll = Random.Range(0, 4);
 
-            return roll switch
-            {
+            return roll switch {
                 1 => SpawnLocation.Bottom,
                 2 => SpawnLocation.Left,
                 3 => SpawnLocation.Right,
@@ -83,13 +71,11 @@ namespace Asteroids
             };
         }
 
-        private Vector3 GetStartPosition(SpawnLocation spawnLocation)
-        {
+        private Vector3 GetStartPosition(SpawnLocation spawnLocation) {
             var pos = new Vector3 { z = Mathf.Abs(_camera.transform.position.z) };
-            
+
             const float padding = 5f;
-            switch (spawnLocation)
-            {
+            switch (spawnLocation) {
                 case SpawnLocation.Top:
                     pos.x = Random.Range(0f, Screen.width);
                     pos.y = Screen.height + padding;
@@ -109,7 +95,7 @@ namespace Asteroids
                 default:
                     throw new ArgumentOutOfRangeException(nameof(spawnLocation), spawnLocation, null);
             }
-            
+
             return _camera.ScreenToWorldPoint(pos);
         }
     }
