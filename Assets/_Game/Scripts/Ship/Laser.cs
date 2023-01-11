@@ -34,5 +34,7 @@ namespace Ship
             var trans = transform;
             _rigidbody.MovePosition(trans.position + trans.up * _speed);
         }
+
+        
     }
 }

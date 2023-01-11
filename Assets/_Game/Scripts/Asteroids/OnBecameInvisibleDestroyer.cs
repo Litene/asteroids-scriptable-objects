@@ -8,7 +8,7 @@ namespace Asteroids
         
         private void OnBecameInvisible()
         {
-            Destroy(_toDestroy);
+            //Destroy(_toDestroy);
         }
     }
 }

@@ -8,9 +8,11 @@ namespace Ship {
     public class Engine : MonoBehaviour {
         [SerializeField] private FloatVariable _throttlePower;
         [SerializeField] private FloatVariable _rotationPower;
-
+        
         [SerializeField] private float _throttlePowerSimple; // not used?
         [SerializeField] private float _rotationPowerSimple; // not used?
+
+        public SharedPool pool;
 
         private bool _throttle;
         private bool _steerLeft;
@@ -26,18 +28,18 @@ namespace Ship {
             _throttle = Input.GetKey(KeyCode.UpArrow);
             _steerLeft = Input.GetKey(KeyCode.LeftArrow);
             _steerRight = Input.GetKey(KeyCode.RightArrow);
-        }
-        private void Awake() => _rigidbody = GetComponent<Rigidbody2D>();
-        public void Throttle() {
-            _rigidbody.AddForce(transform.up * _throttlePower.Value, ForceMode2D.Force);
+
+            if (Input.GetKeyDown(KeyCode.H)) {
+                Debug.Log(pool);
+            }
         }
 
-        public void SteerLeft() {
-            _rigidbody.AddTorque(_rotationPower.Value, ForceMode2D.Force);
-        }
-
-        public void SteerRight() {
-            _rigidbody.AddTorque(-_rotationPower.Value, ForceMode2D.Force);
-        }
+        private void Awake() {
+            _rigidbody = GetComponent<Rigidbody2D>();
+           // pool.InitializePool();
+        } 
+        public void Throttle() => _rigidbody.AddForce(transform.up * _throttlePower.Value, ForceMode2D.Force);
+        public void SteerLeft() => _rigidbody.AddTorque(_rotationPower.Value, ForceMode2D.Force);
+        public void SteerRight() => _rigidbody.AddTorque(-_rotationPower.Value, ForceMode2D.Force);
     }
 }

@@ -1,18 +1,22 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Animations;
 using Random = UnityEngine.Random;
+using UnityEngine.Pool;
+
 
 namespace Asteroids {
     public class AsteroidSpawner : MonoBehaviour { // pool all the astroids, and set max astroids on scene, set spawntimer, 
         [SerializeField] private Asteroid _asteroidPrefab;
-        [SerializeField] private float _minSpawnTime;
-        [SerializeField] private float _maxSpawnTime;
-        [SerializeField] private int _minAmount;
-        [SerializeField] private int _maxAmount;
+        [SerializeField] private float _minSpawnTime; // needs to be scriptableObject
+        [SerializeField] private float _maxSpawnTime; // needs to be scriptableObject
+        [SerializeField] private int _minAmount; // needs to be scripableObject
+        [SerializeField] private int _maxAmount; // needs to be scripableObject
 
         private float _timer;
         private float _nextSpawnTime;
         private Camera _camera;
+        private ObjectPool<Asteroid> _asteroidPool;
 
         private enum SpawnLocation {
             Top,
@@ -21,9 +25,26 @@ namespace Asteroids {
             Right
         }
 
-        private void Start() {
+        private void Awake() {
             _camera = Camera.main;
-            Spawn();
+            _asteroidPool = new ObjectPool<Asteroid>(
+                SpawnNew,
+                OnAstroidGet,
+                OnAstroidRelease,
+                OnAstroidDestroy,
+                true, 
+                4, 
+                10);
+        }
+
+        private void OnAstroidDestroy(Asteroid obj) => Destroy(obj.gameObject);
+        private void OnAstroidRelease(Asteroid obj) => obj.gameObject.SetActive(false);
+        private void OnAstroidGet(Asteroid obj) => obj.gameObject.SetActive(true);
+        
+        
+
+        private void Start() {
+            SpawnNew();
             UpdateNextSpawnTime();
         }
 
@@ -33,7 +54,7 @@ namespace Asteroids {
             if (!ShouldSpawn())
                 return;
 
-            Spawn();
+            SpawnNew();
             UpdateNextSpawnTime();
             _timer = 0f;
         }
@@ -50,15 +71,29 @@ namespace Asteroids {
             return _timer >= _nextSpawnTime;
         }
 
+        private Asteroid SpawnNew() {
+            var amount = Random.Range(_minAmount, _maxAmount + 1);
+            Asteroid asteroid = null;
+            for (var i = 0; i < amount; i++) {
+                var location = GetSpawnLocation();
+                var position = GetStartPosition(location);
+                asteroid = Instantiate(_asteroidPrefab, position, Quaternion.identity);
+                asteroid.SetPool(_asteroidPool);
+            }
+
+            return asteroid;
+        }
+
         private void Spawn() {
             var amount = Random.Range(_minAmount, _maxAmount + 1);
 
             for (var i = 0; i < amount; i++) {
                 var location = GetSpawnLocation();
                 var position = GetStartPosition(location);
-                Instantiate(_asteroidPrefab, position, Quaternion.identity);
+                var asteroid = _asteroidPool.Get();
             }
         }
+        
 
         private static SpawnLocation GetSpawnLocation() {
             var roll = Random.Range(0, 4);

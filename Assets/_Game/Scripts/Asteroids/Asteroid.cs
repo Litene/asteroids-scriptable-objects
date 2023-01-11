@@ -1,6 +1,7 @@
 using DefaultNamespace.ScriptableEvents;
 using System;
 using UnityEngine;
+using UnityEngine.Pool;
 using Variables;
 using Random = UnityEngine.Random;
 
@@ -22,7 +23,11 @@ namespace Asteroids {
         private Rigidbody2D _rigidbody;
         private Vector3 _direction;
         private int _instanceId;
+        private ObjectPool<Asteroid> _pool;
 
+        public void SetPool(ObjectPool<Asteroid> pool) {
+            _pool = pool;
+        }
 
         private void Awake() {
             _rigidbody = GetComponent<Rigidbody2D>();
@@ -42,10 +47,15 @@ namespace Asteroids {
             }
         }
 
+        public void DestroyOutOfBounds() { // math or colliders
+            _pool.Release(this);
+        }
+
         private void HitByLaser() {
             _onAsteroidDestroyed.Raise(_instanceId);
-            Destroy(gameObject);
+            _pool?.Release(this);
         }
+        
 
         // TODO Can we move this to a single listener, something like an AsteroidDestroyer?
         public void OnHitByLaser(IntReference asteroidId) { 
@@ -89,6 +99,11 @@ namespace Asteroids {
         private void SetSize() {
             var size = Random.Range(_minSize, _maxSize);
             _shape.localScale = new Vector3(size, size, 0f);
+        }
+
+        private void OnBecameInvisible() {
+            Debug.Log("yo");
+            _pool.Release(this);
         }
     }
 }
