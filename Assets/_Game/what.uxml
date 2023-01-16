@@ -1,5 +1,65 @@
-<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
-    <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
-        <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" />
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <Style src="project://database/Assets/GameEditorLayout/EditorLayout.uss?fileID=7433441132597879392&amp;guid=3ccbba4e4cf6ffc42accc5ea9dd4835b&amp;type=3#EditorLayout" />
+    <ui:Label tabindex="-1" text="Game Editor" display-tooltip-when-elided="true" style="font-size: 24px; -unity-text-align: upper-center;" />
+    <ui:VisualElement name="Editor" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: row;">
+        <ui:VisualElement name="LeftCollumn" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); min-width: auto; min-height: auto;">
+            <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); min-width: auto; min-height: auto; -unity-text-outline-width: 0; -unity-text-outline-color: rgba(0, 0, 0, 0); text-shadow: 0 0 0 rgba(0, 0, 0, 0); border-left-color: rgba(0, 0, 0, 0); border-right-color: rgba(0, 0, 0, 0); border-top-color: rgba(0, 0, 0, 0); border-bottom-color: rgba(0, 0, 0, 0); border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; border-top-left-radius: 0; border-bottom-left-radius: 0; border-top-right-radius: 0; border-bottom-right-radius: 0; padding-left: 1px; padding-right: 1px; padding-top: 1px; padding-bottom: 1px; margin-left: 4px; margin-right: 4px; margin-top: 4px; margin-bottom: 4px; height: -61px;">
+                <ui:Label tabindex="-1" text="Ship" display-tooltip-when-elided="true" name="Ship" style="font-size: 20px; -unity-text-align: upper-center;" />
+                <ui:Label tabindex="-1" text="Hull" display-tooltip-when-elided="true" name="Hull" style="font-size: 16px;" />
+                <ui:EnumField label="Enum" type="UnityEngine.TextAlignment, UnityEngine.TextRenderingModule" value="Center" style="-unity-text-align: upper-left;" />
+                <ui:Slider picking-mode="Ignore" label="Slider" value="42" high-value="100" style="align-items: flex-end;" />
+                <ui:Slider picking-mode="Ignore" label="Slider" value="42" high-value="100" />
+            </ui:VisualElement>
+            <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); min-width: auto; min-height: 50%; max-height: 50%;">
+                <ui:Label tabindex="-1" text="Engine" display-tooltip-when-elided="true" name="Engine" style="font-size: 16px;" />
+                <ui:Slider picking-mode="Ignore" label="Slider" value="42" high-value="100" />
+                <ui:Slider picking-mode="Ignore" label="Slider" value="42" high-value="100" />
+                <ui:Slider picking-mode="Ignore" label="Slider" value="42" high-value="100" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); max-width: 50%;">
+            <ui:Label tabindex="-1" text="Asteroids" display-tooltip-when-elided="true" style="font-size: 20px; -unity-text-align: upper-center;" />
+            <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: row; min-width: auto; min-height: auto; max-height: 20px;">
+                <uie:ObjectField label="Asteroid Setting" style="justify-content: flex-start; visibility: visible; overflow: hidden; align-items: stretch; align-self: auto;" />
+                <ui:Button text="Load" display-tooltip-when-elided="true" style="flex-grow: 0.5; flex-wrap: nowrap; flex-basis: auto; justify-content: flex-start; align-self: auto; align-items: center; flex-shrink: 0;" />
+                <ui:Button text="Save" display-tooltip-when-elided="true" style="flex-wrap: nowrap; align-self: auto; align-items: center; flex-grow: 0.5;" />
+                <ui:Button text="new" display-tooltip-when-elided="true" style="flex-wrap: nowrap; align-self: auto; align-items: center; flex-grow: 0.5;" />
+            </ui:VisualElement>
+            <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+                <ui:Label tabindex="-1" text="Force setting" display-tooltip-when-elided="true" />
+                <ui:EnumField label="Randomize" type="UnityEngine.TextAlignment, UnityEngine.TextRenderingModule" value="Center" />
+                <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); min-height: auto; min-width: auto;">
+                    <uie:CurveField label="Curve" />
+                    <ui:FloatField label="Fixed" value="42.2" />
+                    <ui:FloatField label="Min" value="42.2" />
+                    <ui:FloatField label="Max" value="42.2" />
+                </ui:VisualElement>
+                <ui:Label tabindex="-1" text="Size Setting" display-tooltip-when-elided="true" />
+                <ui:EnumField label="Randomize" type="UnityEngine.TextAlignment, UnityEngine.TextRenderingModule" value="Center" />
+                <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); min-height: auto; min-width: auto;">
+                    <uie:CurveField label="Curve" />
+                    <ui:FloatField label="Fixed" value="42.2" />
+                    <ui:FloatField label="Min" value="42.2" />
+                    <ui:FloatField label="Max" value="42.2" />
+                </ui:VisualElement>
+                <ui:Label tabindex="-1" text="Torque Setting" display-tooltip-when-elided="true" />
+                <ui:EnumField label="Randomize" type="UnityEngine.TextAlignment, UnityEngine.TextRenderingModule" value="Center" />
+                <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+                    <uie:CurveField label="Curve" />
+                    <ui:FloatField label="Fixed" value="42.2" />
+                    <ui:FloatField label="Min" value="42.2" />
+                    <ui:FloatField label="Max" value="42.2" />
+                </ui:VisualElement>
+                <ui:Label tabindex="-1" text="Mass Setting" display-tooltip-when-elided="true" />
+                <ui:EnumField label="Randomize" type="UnityEngine.TextAlignment, UnityEngine.TextRenderingModule" value="Center" />
+                <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); min-height: auto; min-width: auto;">
+                    <uie:CurveField label="Curve" />
+                    <ui:FloatField label="Fixed" value="42.2" />
+                    <ui:FloatField label="Min" value="42.2" />
+                    <ui:FloatField label="Max" value="42.2" />
+                </ui:VisualElement>
+                <ui:Button text="Button" display-tooltip-when-elided="true" />
+            </ui:VisualElement>
+        </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

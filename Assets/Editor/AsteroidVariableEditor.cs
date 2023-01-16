@@ -5,13 +5,14 @@ using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-[CustomPropertyDrawer(typeof(AsteroidVariables))]
+/*[CustomPropertyDrawer(typeof(AsteroidVariables))]
 public class AsteroidVariableEditor : PropertyDrawer {
     public override VisualElement CreatePropertyGUI(SerializedProperty property) {
-        return new PropertyField(property);
+        var root = new VisualElement();
+        root.Add(new EnumField(RandomizedSetting.Fixed));
         
-        
+        return root;
     }
     
     
-}
+}*/

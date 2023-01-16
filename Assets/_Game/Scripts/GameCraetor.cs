@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using Variables;
 
-public class GameEditor : MonoBehaviour {
+public class GameCraetor : MonoBehaviour {
     [Header("Engine")] [SerializeField] private FloatVariable _throttlePowerSO;
     [SerializeField, Range(0.1f, 10f)] private float _throttlePower;
     [SerializeField] private FloatVariable _rotationPowerSO;
@@ -19,25 +19,27 @@ public class GameEditor : MonoBehaviour {
     [SerializeField]
     private AsteroidSetting _asteroidSetting;
 
+    
+    
    /* [SerializeField] private RandomizedSetting _MassSetting;
     [SerializeField] private float _asteroidMassFixed;
     [SerializeField] private float _asteroidMassLower;
     [SerializeField] private float _asteroidMassUpper;*/
     
-    [SerializeField] private RandomizedSetting _forceSetting;
-    [SerializeField] private float _fixedForce;
-    [SerializeField] private float _minForce;
-    [SerializeField] private float _maxForce;
+    // [SerializeField] private RandomizedSetting _forceSetting;
+    // [SerializeField] private float _fixedForce;
+    // [SerializeField] private float _minForce;
+    // [SerializeField] private float _maxForce;
     
-    [SerializeField] private RandomizedSetting _sizeSetting;
-    [SerializeField] private float _fixedSize;
-    [SerializeField] private float _minSize;
-    [SerializeField] private float _maxSize;
+    // [SerializeField] private RandomizedSetting _sizeSetting;
+    // [SerializeField] private float _fixedSize;
+    // [SerializeField] private float _minSize;
+    // [SerializeField] private float _maxSize;
     
-    [SerializeField] private RandomizedSetting _torqueSetting;
-    [SerializeField] private float _fixedTorque;
-    [SerializeField] private float _minTorque;
-    [SerializeField] private float _maxTorque;
+    // [SerializeField] private RandomizedSetting _torqueSetting;
+    // [SerializeField] private float _fixedTorque;
+    // [SerializeField] private float _minTorque;
+    // [SerializeField] private float _maxTorque;
 
     [SerializeField] private string asteroidSettingName;
     
@@ -70,6 +72,7 @@ public class GameEditor : MonoBehaviour {
         AssetDatabase.Refresh();
         EditorUtility.FocusProjectWindow();
         Selection.activeObject = asteroidSetting;
+        
     }
     
     [ContextMenu("SetVariables")] public void SetVariables() {
@@ -91,5 +94,6 @@ public class GameEditor : MonoBehaviour {
 
 public enum RandomizedSetting {
     Fixed,
-    BetweenTwoConstants
+    BetweenTwoConstants,
+    Curve
 }
