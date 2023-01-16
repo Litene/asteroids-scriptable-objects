@@ -12,11 +12,11 @@ namespace Asteroids {
         [SerializeField] private float _maxSpawnTime; // needs to be scriptableObject
         [SerializeField] private int _minAmount; // needs to be scripableObject
         [SerializeField] private int _maxAmount; // needs to be scripableObject
+        [SerializeField] private SharedPool _asteroidPool;
 
         private float _timer;
         private float _nextSpawnTime;
         private Camera _camera;
-        private ObjectPool<Asteroid> _asteroidPool;
 
         private enum SpawnLocation {
             Top,
@@ -27,22 +27,8 @@ namespace Asteroids {
 
         private void Awake() {
             _camera = Camera.main;
-            _asteroidPool = new ObjectPool<Asteroid>(
-                SpawnNew,
-                OnAstroidGet,
-                OnAstroidRelease,
-                OnAstroidDestroy,
-                true, 
-                4, 
-                10);
         }
-
-        private void OnAstroidDestroy(Asteroid obj) => Destroy(obj.gameObject);
-        private void OnAstroidRelease(Asteroid obj) => obj.gameObject.SetActive(false);
-        private void OnAstroidGet(Asteroid obj) => obj.gameObject.SetActive(true);
         
-        
-
         private void Start() {
             SpawnNew();
             UpdateNextSpawnTime();
@@ -77,8 +63,7 @@ namespace Asteroids {
             for (var i = 0; i < amount; i++) {
                 var location = GetSpawnLocation();
                 var position = GetStartPosition(location);
-                asteroid = Instantiate(_asteroidPrefab, position, Quaternion.identity);
-                asteroid.SetPool(_asteroidPool);
+                asteroid = _asteroidPool.Get(position) as Asteroid; // don't like the cast
             }
 
             return asteroid;
@@ -90,7 +75,7 @@ namespace Asteroids {
             for (var i = 0; i < amount; i++) {
                 var location = GetSpawnLocation();
                 var position = GetStartPosition(location);
-                var asteroid = _asteroidPool.Get();
+                var asteroid = _asteroidPool.Get(position);
             }
         }
         

@@ -10,12 +10,8 @@ namespace Asteroids {
     public class Asteroid : MonoBehaviour {
         [SerializeField] private ScriptableEventInt _onAsteroidDestroyed;
 
-        [Header("Config:")] [SerializeField] private float _minForce;
-        [SerializeField] private float _maxForce;
-        [SerializeField] private float _minSize;
-        [SerializeField] private float _maxSize;
-        [SerializeField] private float _minTorque;
-        [SerializeField] private float _maxTorque;
+        [Header("Config:")] [SerializeField] private AsteroidSetting _setting;
+        [SerializeField] private SharedPool _pool;
 
         [Header("References:")] [SerializeField]
         private Transform _shape;
@@ -23,18 +19,13 @@ namespace Asteroids {
         private Rigidbody2D _rigidbody;
         private Vector3 _direction;
         private int _instanceId;
-        private ObjectPool<Asteroid> _pool;
-
-        public void SetPool(ObjectPool<Asteroid> pool) {
-            _pool = pool;
-        }
-
+        
         private void Awake() {
             _rigidbody = GetComponent<Rigidbody2D>();
             _instanceId = GetInstanceID();
         }
 
-        private void Start() {
+        private void OnEnable() {
             SetDirection();
             AddForce();
             AddTorque();
@@ -46,29 +37,25 @@ namespace Asteroids {
                 HitByLaser();
             }
         }
-
-        public void DestroyOutOfBounds() { // math or colliders
-            _pool.Release(this);
-        }
-
+        
         private void HitByLaser() {
             _onAsteroidDestroyed.Raise(_instanceId);
-            _pool?.Release(this);
+            _pool.Release(this);
         }
         
 
         // TODO Can we move this to a single listener, something like an AsteroidDestroyer?
-        public void OnHitByLaser(IntReference asteroidId) { 
+       /* public void OnHitByLaser(IntReference asteroidId) { 
             if (_instanceId == asteroidId.GetValue()) {
                 Destroy(gameObject);
             }
-        }
+        }*/
 
-        public void OnHitByLaserInt(int asteroidId) { // just overload the method above if needed. 
+      /*  public void OnHitByLaserInt(int asteroidId) { // just overload the method above if needed. 
             if (_instanceId == asteroidId) {
                 Destroy(gameObject);
             }
-        }
+        }*/
 
         private void SetDirection() {
             var size = new Vector2(3f, 3f);
@@ -82,12 +69,12 @@ namespace Asteroids {
         }
 
         private void AddForce() {
-            var force = Random.Range(_minForce, _maxForce);
-            _rigidbody.AddForce(_direction * force, ForceMode2D.Impulse);
+            //var force = Random.Range(_minForce, _maxForce);
+            _rigidbody.AddForce(_direction * _setting.GetForce(), ForceMode2D.Impulse);
         }
 
         private void AddTorque() {
-            var torque = Random.Range(_minTorque, _maxTorque);
+            var torque = _setting.GetTorque();
             var roll = Random.Range(0, 2);
 
             if (roll == 0)
@@ -97,13 +84,8 @@ namespace Asteroids {
         }
 
         private void SetSize() {
-            var size = Random.Range(_minSize, _maxSize);
+            var size = _setting.GetSize();
             _shape.localScale = new Vector3(size, size, 0f);
-        }
-
-        private void OnBecameInvisible() {
-            Debug.Log("yo");
-            _pool.Release(this);
         }
     }
 }

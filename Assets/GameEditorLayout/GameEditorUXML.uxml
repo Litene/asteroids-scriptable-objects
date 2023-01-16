@@ -1,0 +1,29 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+        <ui:Label tabindex="-1" text="Game Editor" display-tooltip-when-elided="true" style="-unity-text-align: upper-center; font-size: 20px;" />
+        <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); height: auto; width: auto; min-width: auto; min-height: auto;">
+            <ui:Label tabindex="-1" text="Engine&#10;" display-tooltip-when-elided="true" name="Engine" />
+            <ui:Slider picking-mode="Ignore" label="Slider" value="42" high-value="100" show-input-field="true" />
+            <ui:Slider picking-mode="Ignore" label="Slider" value="42" high-value="100" show-input-field="true" />
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); min-width: auto; min-height: auto;">
+            <ui:Label tabindex="-1" text="Hull&#10;" display-tooltip-when-elided="true" name="Hull" />
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); min-width: auto; min-height: auto;">
+            <ui:Label tabindex="-1" text="Asteroids&#10;" display-tooltip-when-elided="true" name="Asteroids" />
+            <ui:EnumField label="Size Setting" type="UnityEngine.TextAlignment, UnityEngine.TextRenderingModule" value="Center" binding-path="_forceSetting" />
+            <ui:FloatField label="Float Field" value="42.2" />
+            <ui:FloatField label="Float Field" value="42.2" />
+            <ui:FloatField label="Float Field" value="42.2" />
+            <ui:EnumField label="Enum" type="UnityEngine.TextAlignment, UnityEngine.TextRenderingModule" value="Center" />
+            <ui:FloatField label="Float Field" value="42.2" />
+            <ui:FloatField label="Float Field" value="42.2" />
+            <ui:FloatField label="Float Field" value="42.2" />
+            <ui:EnumField label="Enum" type="UnityEngine.TextAlignment, UnityEngine.TextRenderingModule" value="Center" />
+            <ui:FloatField label="Float Field" value="42.2" />
+            <ui:FloatField label="Float Field" value="42.2" />
+            <ui:FloatField label="Float Field" value="42.2" />
+        </ui:VisualElement>
+        <ui:Button text="Button" display-tooltip-when-elided="true" />
+    </ui:VisualElement>
+</ui:UXML>

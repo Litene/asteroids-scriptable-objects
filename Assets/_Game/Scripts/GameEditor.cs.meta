@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 8c5f46f041cd88d439956b48ccf0c8e9
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - UXMLFile: {fileID: 9197481963319205126, guid: 9b987db3dc26e1d4180d009244f321a9, type: 3}
+  - _throttlePowerSO: {instanceID: 0}
+  - _rotationPowerSO: {instanceID: 0}
+  - _maxHealthSO: {instanceID: 0}
+  - _shipMassSO: {instanceID: 0}
+  - _asteroidSetting: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

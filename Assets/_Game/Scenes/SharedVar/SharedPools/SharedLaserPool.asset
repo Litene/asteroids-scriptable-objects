@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 73898cc6f3710c046a9a36c2fdde6671, type: 3}
-  m_Name: Hello
+  m_Name: SharedLaserPool
   m_EditorClassIdentifier: 
-  prefab: {fileID: 1784223117350305363, guid: 01106835b2bc0e347a3bb06b7544b51a, type: 3}
-  _collisionCheck: 0
-  _maxSize: 10
-  _defaultCapacity: 20
+  _prefab: {fileID: 5567069101288871488, guid: 2b9ecba75bf344a41ae8623bcd4fdab6, type: 3}
+  _collisionCheck: 1
+  _maxSize: 0
+  _defaultCapacity: 0

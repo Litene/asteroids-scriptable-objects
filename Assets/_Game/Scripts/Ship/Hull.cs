@@ -1,4 +1,5 @@
 using DefaultNamespace.ScriptableEvents;
+using System;
 using UnityEngine;
 using Variables;
 
@@ -16,5 +17,7 @@ namespace Ship {
                 _healthObservable.ApplyChange(-1); // hardcoded, should be based on damage from astroids, can be based on mass
             }
         }
+
+       
     }
 }

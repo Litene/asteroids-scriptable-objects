@@ -1,22 +1,18 @@
 using System;
 using UnityEngine;
 
-namespace Ship
-{
-    public class Gun : MonoBehaviour
-    {
+namespace Ship {
+    public class Gun : MonoBehaviour {
         [SerializeField] private Laser _laserPrefab;
+        [SerializeField] private SharedPool _laserPool;
 
-        private void Update()
-        {
+        private void Update() {
             if (Input.GetKeyDown(KeyCode.Space))
                 Shoot();
         }
-        
-        private void Shoot()
-        {
-            var trans = transform;
-            Instantiate(_laserPrefab, trans.position, trans.rotation);
+
+        private void Shoot() {
+            _laserPool.Get(transform.position, transform.rotation);
         }
     }
 }
