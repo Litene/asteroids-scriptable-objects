@@ -9,6 +9,13 @@ namespace Ship {
         [SerializeField] private ScriptableEventIntReference _onHealthChangedEvent;
         [SerializeField] private IntReference _healthRef;
         [SerializeField] private IntObservable _healthObservable;
+        [SerializeField] private GameSettings _gameSettings;
+
+        private void Awake() {
+            _healthRef.SetValue(_gameSettings.StartingHealth);
+            _healthObservable.SetValue(_gameSettings.StartingHealth);
+        }
+
         private void OnCollisionEnter2D(Collision2D other) {
             if (string.Equals(other.gameObject.tag, "Asteroid")) {
                 // TODO can we bake this into one call?

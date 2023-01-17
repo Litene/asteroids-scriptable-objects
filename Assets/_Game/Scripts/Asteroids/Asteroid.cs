@@ -25,7 +25,14 @@ namespace Asteroids {
             _instanceId = GetInstanceID();
         }
 
-        private void OnEnable() {
+        // private void OnEnable() {
+        //     SetDirection();
+        //     AddForce();
+        //     AddTorque();
+        //     SetSize();
+        // }
+
+        private void Start() {
             SetDirection();
             AddForce();
             AddTorque();

@@ -1,25 +1,25 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
     <Style src="project://database/Assets/GameEditorLayout/EditorLayout.uss?fileID=7433441132597879392&amp;guid=3ccbba4e4cf6ffc42accc5ea9dd4835b&amp;type=3#EditorLayout" />
     <ui:Label tabindex="-1" text="Game Editor" display-tooltip-when-elided="true" style="font-size: 24px; -unity-text-align: upper-center;" />
-    <ui:VisualElement name="Editor" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: row; -unity-background-image-tint-color: rgb(255, 255, 255); -unity-text-outline-color: rgba(0, 0, 0, 0); flex-basis: 90%; flex-shrink: 0; width: auto;">
+    <ui:VisualElement name="Editor" view-data-key="ParentKey" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: row; -unity-background-image-tint-color: rgb(255, 255, 255); -unity-text-outline-color: rgba(0, 0, 0, 0); flex-basis: 90%; flex-shrink: 0; width: auto;">
         <ui:VisualElement name="LeftCollumn" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); min-width: auto; min-height: auto; max-width: none; width: 50%;">
             <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); min-width: auto; min-height: 20%; -unity-text-outline-width: 0; -unity-text-outline-color: rgba(0, 0, 0, 0); text-shadow: 0 0 0 rgba(0, 0, 0, 0); border-left-color: rgba(0, 0, 0, 0); border-right-color: rgba(0, 0, 0, 0); border-top-color: rgba(0, 0, 0, 0); border-bottom-color: rgba(0, 0, 0, 0); border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; border-top-left-radius: 0; border-bottom-left-radius: 0; border-top-right-radius: 0; border-bottom-right-radius: 0; padding-left: 1px; padding-right: 1px; padding-top: 1px; padding-bottom: 1px; margin-left: 4px; margin-right: 4px; margin-top: 4px; margin-bottom: 4px; height: auto; max-height: 30%;">
                 <ui:Label tabindex="-1" text="Ship" display-tooltip-when-elided="true" name="Ship" style="font-size: 20px; -unity-text-align: upper-center;" />
                 <ui:Label tabindex="-1" text="Hull&#10;" display-tooltip-when-elided="true" name="Hull" style="font-size: 16px;" />
                 <uie:ColorField label="Ship Color" value="RGBA(0.000, 1.000, 1.000, 1.000)" />
-                <ui:Slider picking-mode="Ignore" label="Throttle Power" value="42" high-value="10" show-input-field="true" binding-path="throttleObject" style="align-items: flex-end;" />
-                <ui:Slider picking-mode="Ignore" label="Rotation Power" value="42" high-value="10" show-input-field="true" binding-path="_rotationPower" />
+                <ui:Slider picking-mode="Ignore" label="Throttle Power" value="42" high-value="10" show-input-field="true" binding-path="ThrottlePower" name="ThrottlePower" style="align-items: flex-end;" />
+                <ui:Slider picking-mode="Ignore" label="Rotation Power" value="42" high-value="10" show-input-field="true" binding-path="RotationPower" />
             </ui:VisualElement>
             <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); min-width: auto; min-height: 15%; max-height: 20%;">
                 <ui:Label tabindex="-1" text="Engine&#10;" display-tooltip-when-elided="true" name="Engine" style="font-size: 16px;" />
-                <ui:Slider picking-mode="Ignore" label="Start Health" value="42" high-value="20" show-input-field="true" binding-path="_maxHealth" />
-                <ui:Slider picking-mode="Ignore" label="Ship Mass" value="42" high-value="100" show-input-field="true" binding-path="_shipMass" />
+                <ui:SliderInt picking-mode="Ignore" label="Starting Health" value="42" high-value="100" binding-path="StartingHealth" />
+                <ui:Slider picking-mode="Ignore" label="Ship Mass" value="42" high-value="100" show-input-field="true" binding-path="ShipMass" />
                 <uie:PropertyField binding-path="_asteroidSetting" />
             </ui:VisualElement>
             <ui:Label tabindex="-1" text="Generic&#10;" display-tooltip-when-elided="true" name="Engine" style="font-size: 16px;" />
             <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); min-height: auto; min-width: auto; max-height: 20px; flex-direction: row; align-self: auto; justify-content: flex-start;">
-                <ui:Toggle label="Invert Controls" />
-                <ui:Toggle label="Cheat Mode" />
+                <ui:Toggle label="Invert Controls" binding-path="InvertControls" />
+                <ui:Toggle label="Cheat Mode" binding-path="CheatMode" />
             </ui:VisualElement>
             <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: row; max-height: 20px; margin-bottom: 0;">
                 <ui:Toggle label="Toggle" />
@@ -34,7 +34,7 @@
         </ui:VisualElement>
         <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); max-width: none; min-width: auto; width: auto;">
             <ui:Label tabindex="-1" text="Asteroids" display-tooltip-when-elided="true" style="font-size: 20px; -unity-text-align: upper-center;" />
-            <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: row; min-width: auto; min-height: auto; max-height: 20px;">
+            <ui:VisualElement name="ButtonVisualElements" view-data-key="ButtonVisualElements" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: row; min-width: auto; min-height: auto; max-height: 20px;">
                 <uie:ObjectField label="Asteroid Setting" type="AsteroidSetting, Assembly-CSharp" allow-scene-objects="false" name="AsteroidSettingField" binding-path="_asteroidSetting" style="justify-content: flex-start; visibility: visible; overflow: hidden; align-items: stretch; align-self: auto;" />
                 <ui:Button text="Load" display-tooltip-when-elided="true" name="Load" style="flex-grow: 1; flex-wrap: nowrap; flex-basis: auto; justify-content: flex-start; align-self: auto; align-items: center; flex-shrink: 1;" />
                 <ui:Button text="Save" display-tooltip-when-elided="true" name="Save" style="flex-wrap: nowrap; align-self: auto; align-items: center; flex-grow: 1; flex-shrink: 1;" />
@@ -42,36 +42,36 @@
             </ui:VisualElement>
             <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
                 <ui:Label tabindex="-1" text="Force setting" display-tooltip-when-elided="true" />
-                <ui:EnumField label="Randomize" type="UnityEngine.TextAlignment, UnityEngine.TextRenderingModule" value="Center" />
+                <ui:EnumField label="Randomize" type="UnityEngine.TextAlignment, UnityEngine.TextRenderingModule" value="Center" binding-path="ForceRandomize" />
                 <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); min-height: auto; min-width: auto;">
                     <uie:CurveField label="Curve" />
-                    <ui:FloatField label="Fixed" value="42.2" />
-                    <ui:FloatField label="Min" value="42.2" />
-                    <ui:FloatField label="Max" value="42.2" />
+                    <ui:FloatField label="Fixed" value="42.2" binding-path="ForceSettingFixed" />
+                    <ui:FloatField label="Min" value="42.2" binding-path="ForceSettingMin" style="height: 18px;" />
+                    <ui:FloatField label="Max" value="42.2" binding-path="ForceSettingMax" />
                 </ui:VisualElement>
                 <ui:Label tabindex="-1" text="Size Setting" display-tooltip-when-elided="true" />
-                <ui:EnumField label="Randomize" type="UnityEngine.TextAlignment, UnityEngine.TextRenderingModule" value="Center" />
+                <ui:EnumField label="Randomize" type="UnityEngine.TextAlignment, UnityEngine.TextRenderingModule" value="Center" binding-path="SizeRandomize" />
                 <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); min-height: auto; min-width: auto;">
                     <uie:CurveField label="Curve" />
-                    <ui:FloatField label="Fixed" value="42.2" />
-                    <ui:FloatField label="Min" value="42.2" />
-                    <ui:FloatField label="Max" value="42.2" />
+                    <ui:FloatField label="Fixed" value="42.2" binding-path="SizeSettingFixed" />
+                    <ui:FloatField label="Min" value="42.2" binding-path="SizeSettingMin" style="height: 20px;" />
+                    <ui:FloatField label="Max" value="42.2" binding-path="SizeSettingMax" />
                 </ui:VisualElement>
                 <ui:Label tabindex="-1" text="Torque Setting" display-tooltip-when-elided="true" />
-                <ui:EnumField label="Randomize" type="UnityEngine.TextAlignment, UnityEngine.TextRenderingModule" value="Center" />
+                <ui:EnumField label="Randomize" type="UnityEngine.TextAlignment, UnityEngine.TextRenderingModule" value="Center" binding-path="TorqueRandomize" />
                 <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
                     <uie:CurveField label="Curve" />
-                    <ui:FloatField label="Fixed" value="42.2" />
-                    <ui:FloatField label="Min" value="42.2" />
-                    <ui:FloatField label="Max" value="42.2" />
+                    <ui:FloatField label="Fixed" value="42.2" binding-path="TorqueSettingFixed" />
+                    <ui:FloatField label="Min" value="42.2" binding-path="TorqueSettingMin" />
+                    <ui:FloatField label="Max" value="42.2" binding-path="TorqueSettingMax" />
                 </ui:VisualElement>
                 <ui:Label tabindex="-1" text="Mass Setting" display-tooltip-when-elided="true" />
-                <ui:EnumField label="Randomize" type="UnityEngine.TextAlignment, UnityEngine.TextRenderingModule" value="Center" />
+                <ui:EnumField label="Randomize" type="UnityEngine.TextAlignment, UnityEngine.TextRenderingModule" value="Center" binding-path="MassRandomize" />
                 <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); min-height: auto; min-width: auto;">
                     <uie:CurveField label="Curve" />
-                    <ui:FloatField label="Fixed" value="42.2" />
-                    <ui:FloatField label="Min" value="42.2" />
-                    <ui:FloatField label="Max" value="42.2" />
+                    <ui:FloatField label="Fixed" value="42.2" binding-path="MassSettingFixed" />
+                    <ui:FloatField label="Min" value="42.2" binding-path="MassSettingMin" />
+                    <ui:FloatField label="Max" value="42.2" binding-path="MassSettingMax" />
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>

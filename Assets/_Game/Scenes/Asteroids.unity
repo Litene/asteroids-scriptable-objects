@@ -253,18 +253,7 @@ MonoBehaviour:
   _shipMassSO: {fileID: 11400000, guid: 7e55b8fe0266b8b458a6402bf3048915, type: 2}
   _shipMass: 0.1
   _asteroidSetting: {fileID: 11400000, guid: 9e8073795add68b49b040ac2aee65990, type: 2}
-  _asteroidMassFixed: 0
-  _asteroidMassLower: 0
-  _asteroidMassUpper: 0
-  _fixedForce: 0
-  _minForce: 0
-  _maxForce: 0
-  _fixedSize: 0
-  _minSize: 0
-  _maxSize: 0
-  _fixedTorque: 0
-  _minTorque: 0
-  _maxTorque: 0
+  asteroidSettingName: 
 --- !u!4 &1274506655
 Transform:
   m_ObjectHideFlags: 0
@@ -401,6 +390,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2970632031999273633, guid: ab39a3d0044af1d46b46c0ccbc24f3dd, type: 3}
+      propertyPath: _gameSettings
+      value: 
+      objectReference: {fileID: 11400000, guid: 66dc1af43da25224ea4e271685ca7908, type: 2}
+    - target: {fileID: 2970632031999273633, guid: ab39a3d0044af1d46b46c0ccbc24f3dd, type: 3}
       propertyPath: _healthRef._simpleValue
       value: 30
       objectReference: {fileID: 0}
@@ -464,6 +457,10 @@ PrefabInstance:
       propertyPath: _mass
       value: 
       objectReference: {fileID: 11400000, guid: 7e55b8fe0266b8b458a6402bf3048915, type: 2}
+    - target: {fileID: 2970632031999273638, guid: ab39a3d0044af1d46b46c0ccbc24f3dd, type: 3}
+      propertyPath: _settings
+      value: 
+      objectReference: {fileID: 11400000, guid: 66dc1af43da25224ea4e271685ca7908, type: 2}
     - target: {fileID: 2970632031999273638, guid: ab39a3d0044af1d46b46c0ccbc24f3dd, type: 3}
       propertyPath: _forceMode
       value: 0

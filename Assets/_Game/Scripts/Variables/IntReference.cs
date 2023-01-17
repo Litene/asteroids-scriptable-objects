@@ -28,6 +28,11 @@ namespace Variables
         {
             return _useSimple ? _simpleValue : _intVariable.Value;
         }
+
+        public void SetValue(int value) {
+            _simpleValue = value;
+            _intVariable.SetValue(value);
+        }
         public void ApplyChange(int change)
         {
             if (_useSimple)
