@@ -24,6 +24,8 @@ public class AsteroidSetting : ScriptableObject { // error handling is making su
         _torqueVariables.Sync();
         _massVariables.Sync();
     }*/
+
+   public float readValue = 2;
     
     public float GetForce() => _settings.ForceRandomize == RandomizedSetting.Fixed ? _settings.ForceSettingFixed : Random.Range(_settings.ForceSettingMin, _settings.ForceSettingMax);
     //public AsteroidVariables GetForceVars() => _forceVariables;

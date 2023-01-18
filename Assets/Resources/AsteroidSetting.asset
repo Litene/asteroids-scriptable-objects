@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: AsteroidSetting
   m_EditorClassIdentifier: 
   _settings: {fileID: 11400000, guid: 66dc1af43da25224ea4e271685ca7908, type: 2}
+  readValue: 2

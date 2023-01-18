@@ -252,7 +252,7 @@ MonoBehaviour:
   _maxHealth: 10
   _shipMassSO: {fileID: 11400000, guid: 7e55b8fe0266b8b458a6402bf3048915, type: 2}
   _shipMass: 0.1
-  _asteroidSetting: {fileID: 11400000, guid: 9e8073795add68b49b040ac2aee65990, type: 2}
+  _asteroidSetting: {fileID: 0}
   asteroidSettingName: 
 --- !u!4 &1274506655
 Transform:

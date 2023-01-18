@@ -13,20 +13,20 @@ MonoBehaviour:
   m_Name: GameSettingsFile
   m_EditorClassIdentifier: 
   ShipColor: {r: 0, g: 0, b: 0, a: 0}
-  RotationPower: 7.33
-  ThrottlePower: 6
+  RotationPower: 7.08
+  ThrottlePower: 4.43
   StartingHealth: 29
   ShipMass: 53.8
   InvertControls: 1
   CheatMode: 1
   ForceRandomize: 0
-  ForceSettingMin: 3.12
-  ForceSettingMax: 1.35
-  ForceSettingFixed: 1.92
+  ForceSettingMin: 0
+  ForceSettingMax: 0
+  ForceSettingFixed: 0
   SizeRandomize: 0
-  SizeSettingMin: 1.71
-  SizeSettingMax: 1.07
-  SizeSettingFixed: 2.85
+  SizeSettingMin: 0
+  SizeSettingMax: 0
+  SizeSettingFixed: 0
   TorqueRandomize: 0
   TorqueSettingMin: 0
   TorqueSettingMax: 0

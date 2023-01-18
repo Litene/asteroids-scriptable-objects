@@ -42,36 +42,32 @@
             </ui:VisualElement>
             <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
                 <ui:Label tabindex="-1" text="Force setting" display-tooltip-when-elided="true" />
-                <ui:EnumField label="Randomize" type="UnityEngine.TextAlignment, UnityEngine.TextRenderingModule" value="Center" binding-path="ForceRandomize" />
+                <ui:EnumField label="Randomize" type="UnityEngine.TextAlignment, UnityEngine.TextRenderingModule" value="Center" binding-path="ForceRandomize" name="ForceRandom" />
                 <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); min-height: auto; min-width: auto;">
-                    <uie:CurveField label="Curve" />
-                    <ui:FloatField label="Fixed" value="42.2" binding-path="ForceSettingFixed" />
-                    <ui:FloatField label="Min" value="42.2" binding-path="ForceSettingMin" style="height: 18px;" />
-                    <ui:FloatField label="Max" value="42.2" binding-path="ForceSettingMax" />
+                    <ui:FloatField label="Fixed" value="42.2" binding-path="ForceSettingFixed" name="ForceFixed" style="height: 18px;" />
+                    <ui:FloatField label="Min" value="42.2" binding-path="ForceSettingMin" name="ForceMin" style="height: 18px;" />
+                    <ui:FloatField label="Max" value="42.2" binding-path="ForceSettingMax" name="ForceMax" />
                 </ui:VisualElement>
                 <ui:Label tabindex="-1" text="Size Setting" display-tooltip-when-elided="true" />
-                <ui:EnumField label="Randomize" type="UnityEngine.TextAlignment, UnityEngine.TextRenderingModule" value="Center" binding-path="SizeRandomize" />
+                <ui:EnumField label="Randomize" type="UnityEngine.TextAlignment, UnityEngine.TextRenderingModule" value="Center" binding-path="SizeRandomize" name="SizeRandom" />
                 <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); min-height: auto; min-width: auto;">
-                    <uie:CurveField label="Curve" />
-                    <ui:FloatField label="Fixed" value="42.2" binding-path="SizeSettingFixed" />
-                    <ui:FloatField label="Min" value="42.2" binding-path="SizeSettingMin" style="height: 20px;" />
-                    <ui:FloatField label="Max" value="42.2" binding-path="SizeSettingMax" />
+                    <ui:FloatField label="Fixed" value="42.2" binding-path="SizeSettingFixed" name="SizeFixed" />
+                    <ui:FloatField label="Min" value="42.2" binding-path="SizeSettingMin" name="SizeMin" style="height: 20px;" />
+                    <ui:FloatField label="Max" value="42.2" binding-path="SizeSettingMax" name="SizeMax" />
                 </ui:VisualElement>
                 <ui:Label tabindex="-1" text="Torque Setting" display-tooltip-when-elided="true" />
-                <ui:EnumField label="Randomize" type="UnityEngine.TextAlignment, UnityEngine.TextRenderingModule" value="Center" binding-path="TorqueRandomize" />
+                <ui:EnumField label="Randomize" type="UnityEngine.TextAlignment, UnityEngine.TextRenderingModule" value="Center" binding-path="TorqueRandomize" name="TorqueRandom" />
                 <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
-                    <uie:CurveField label="Curve" />
-                    <ui:FloatField label="Fixed" value="42.2" binding-path="TorqueSettingFixed" />
-                    <ui:FloatField label="Min" value="42.2" binding-path="TorqueSettingMin" />
-                    <ui:FloatField label="Max" value="42.2" binding-path="TorqueSettingMax" />
+                    <ui:FloatField label="Fixed" value="42.2" binding-path="TorqueSettingFixed" name="TorqueFixed" />
+                    <ui:FloatField label="Min" value="42.2" binding-path="TorqueSettingMin" name="TorqueMin" />
+                    <ui:FloatField label="Max" value="42.2" binding-path="TorqueSettingMax" name="TorqueMax" />
                 </ui:VisualElement>
                 <ui:Label tabindex="-1" text="Mass Setting" display-tooltip-when-elided="true" />
-                <ui:EnumField label="Randomize" type="UnityEngine.TextAlignment, UnityEngine.TextRenderingModule" value="Center" binding-path="MassRandomize" />
+                <ui:EnumField label="Randomize" type="UnityEngine.TextAlignment, UnityEngine.TextRenderingModule" value="Center" binding-path="MassRandomize" name="MassRandom" />
                 <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); min-height: auto; min-width: auto;">
-                    <uie:CurveField label="Curve" />
-                    <ui:FloatField label="Fixed" value="42.2" binding-path="MassSettingFixed" />
-                    <ui:FloatField label="Min" value="42.2" binding-path="MassSettingMin" />
-                    <ui:FloatField label="Max" value="42.2" binding-path="MassSettingMax" />
+                    <ui:FloatField label="Fixed" value="42.2" binding-path="MassSettingFixed" name="MassFixed" />
+                    <ui:FloatField label="Min" value="42.2" binding-path="MassSettingMin" name="MassMin" />
+                    <ui:FloatField label="Max" value="42.2" binding-path="MassSettingMax" name="MassMax" />
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>

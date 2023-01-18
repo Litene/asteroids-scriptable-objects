@@ -94,6 +94,5 @@ public class GameCraetor : MonoBehaviour {
 
 public enum RandomizedSetting {
     Fixed,
-    BetweenTwoConstants,
-    Curve
+    BetweenTwoConstants
 }
