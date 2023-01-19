@@ -502,6 +502,10 @@ PrefabInstance:
       value: 1.2715299
       objectReference: {fileID: 0}
     - target: {fileID: 2970632033307266020, guid: ab39a3d0044af1d46b46c0ccbc24f3dd, type: 3}
+      propertyPath: _settings
+      value: 
+      objectReference: {fileID: 11400000, guid: 66dc1af43da25224ea4e271685ca7908, type: 2}
+    - target: {fileID: 2970632033307266020, guid: ab39a3d0044af1d46b46c0ccbc24f3dd, type: 3}
       propertyPath: _laserPool
       value: 
       objectReference: {fileID: 11400000, guid: 2a049f8086c63ac41a0bb09a68344ea2, type: 2}

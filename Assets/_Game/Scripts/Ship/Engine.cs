@@ -30,7 +30,7 @@ namespace Ship {
             _rigidbody = GetComponent<Rigidbody2D>();
         } 
         public void Throttle() => _rigidbody.AddForce(transform.up *  _settings.ThrottlePower, ForceMode2D.Force);
-        public void SteerLeft() => _rigidbody.AddTorque(_settings.RotationPower, ForceMode2D.Force);
-        public void SteerRight() => _rigidbody.AddTorque(-_settings.RotationPower, ForceMode2D.Force);
+        public void SteerLeft() => _rigidbody.AddTorque(_settings.InvertControls ? -_settings.RotationPower : _settings.RotationPower, ForceMode2D.Force);
+        public void SteerRight() => _rigidbody.AddTorque(_settings.InvertControls ? _settings.RotationPower : -_settings.RotationPower, ForceMode2D.Force);
     }
 }

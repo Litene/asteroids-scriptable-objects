@@ -12,26 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fdea1ca844c6af4ca9708f7816b03e1, type: 3}
   m_Name: GameSettingsFile
   m_EditorClassIdentifier: 
-  ShipColor: {r: 0, g: 0, b: 0, a: 0}
-  RotationPower: 7.08
-  ThrottlePower: 4.43
-  StartingHealth: 29
-  ShipMass: 53.8
+  ShipColor: {r: 0.8207547, g: 0.08904416, b: 0.08904416, a: 1}
+  RotationPower: 0.56
+  ThrottlePower: 7.55
+  StartingHealth: 74
+  ShipMass: 1
   InvertControls: 1
   CheatMode: 1
-  ForceRandomize: 0
-  ForceSettingMin: 0
-  ForceSettingMax: 0
-  ForceSettingFixed: 0
-  SizeRandomize: 0
-  SizeSettingMin: 0
-  SizeSettingMax: 0
-  SizeSettingFixed: 0
-  TorqueRandomize: 0
-  TorqueSettingMin: 0
-  TorqueSettingMax: 0
-  TorqueSettingFixed: 0
-  MassRandomize: 0
-  MassSettingMin: 0
-  MassSettingMax: 0
-  MassSettingFixed: 0
+  HoldToShoot: 1

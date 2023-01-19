@@ -1,66 +1,125 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using UnityEditor;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 [CreateAssetMenu(fileName = "Asteroid Setting")]
-public class AsteroidSetting : ScriptableObject { // error handling is making sure min is lower than max
+public class AsteroidSetting : ScriptableObject {
 
-    [SerializeField] private GameSettings _settings; // dont forget to set this.
+    [SerializeField] public AsteroidVariables ForceVariables = new();
+
+    [SerializeField] public AsteroidVariables SizeVariables = new();
+
+    [SerializeField] public AsteroidVariables TorqueVariables = new();
+
+    [SerializeField] public AsteroidVariables MassVariables = new();
     
-  /*  [SerializeField] private AsteroidVariables _forceVariables;
-
-    [SerializeField] private AsteroidVariables _sizeVariables;
-
-    [SerializeField] private AsteroidVariables _torqueVariables;
-
-    [SerializeField] private AsteroidVariables _massVariables; // not yet used;*/
-
-   /* private void OnValidate() { // this might not work. should make min to max and vice versa.
-        _forceVariables.Sync();
-        _sizeVariables.Sync();
-        _torqueVariables.Sync();
-        _massVariables.Sync();
-    }*/
-
-   public float readValue = 2;
-    
-    public float GetForce() => _settings.ForceRandomize == RandomizedSetting.Fixed ? _settings.ForceSettingFixed : Random.Range(_settings.ForceSettingMin, _settings.ForceSettingMax);
-    //public AsteroidVariables GetForceVars() => _forceVariables;
-    public float GetSize() => _settings.SizeRandomize == RandomizedSetting.Fixed ? _settings.SizeSettingFixed : Random.Range(_settings.SizeSettingMin, _settings.SizeSettingMax);
-    public float GetTorque() => _settings.TorqueRandomize == RandomizedSetting.Fixed ? _settings.TorqueSettingFixed : Random.Range(_settings.TorqueSettingMin, _settings.TorqueSettingMax);
-    //ublic AsteroidVariables GetTorqueVars() => _torqueVariables;
-    public float GetMass() => _settings.MassRandomize == RandomizedSetting.Fixed ? _settings.MassSettingFixed : Random.Range(_settings.MassSettingMin, _settings.MassSettingMax); // not yet used
-   // public AsteroidVariables GetMassVars() => _massVariables; // not yet used
+#if UNITY_EDITOR
+    public List<AsteroidVariables> settings;
 
     private void OnEnable() {
-        _settings ??= Resources.Load("GameSettingsFile") as GameSettings;
+        settings = new List<AsteroidVariables>() { ForceVariables, SizeVariables, TorqueVariables, MassVariables };
+    }
+#endif
 
-        EditorUtility.SetDirty(this);
-        
-     /*   _forceVariables.RandomizedSetting = _settings.ForceRandomize;
-        _forceVariables.Fixed = _settings.ForceSettingFixed;
-        _forceVariables.Min = _settings.ForceSettingMin;
-        _forceVariables.Max = _settings.ForceSettingMax;
-        
-        _sizeVariables.RandomizedSetting = _settings.SizeRandomize;
-        _sizeVariables.Fixed = _settings.SizeSettingFixed;
-        _sizeVariables.Min = _settings.SizeSettingMin;
-        _sizeVariables.Max = _settings.SizeSettingMax;
-        
-        _torqueVariables.RandomizedSetting = _settings.TorqueRandomize;
-        _torqueVariables.Fixed = _settings.TorqueSettingFixed;
-        _torqueVariables.Min = _settings.TorqueSettingMin;
-        _torqueVariables.Max = _settings.TorqueSettingMax;
-        
-        _massVariables.RandomizedSetting = _settings.MassRandomize;
-        _massVariables.Fixed = _settings.MassSettingFixed;
-        _massVariables.Min = _settings.MassSettingMin;
-        _massVariables.Max = _settings.MassSettingMax;*/
+
+    public void SetVariables(AsteroidSettingType type, float fixedVar, float minVar, float maxVar, string enumString) {
+        var setting = GetEnumFromString(enumString);
+        switch (type) {
+            case AsteroidSettingType.Force:
+                ForceVariables.RandomizedSetting = setting;
+                ForceVariables.Fixed = fixedVar;
+                ForceVariables.Min = minVar;
+                ForceVariables.Max = maxVar;
+                break;
+            case AsteroidSettingType.Size:
+                SizeVariables.RandomizedSetting = setting;
+                SizeVariables.Fixed = fixedVar;
+                SizeVariables.Min = minVar;
+                SizeVariables.Max = maxVar;
+                break;
+            case AsteroidSettingType.Torque:
+                TorqueVariables.RandomizedSetting = setting;
+                TorqueVariables.Fixed = fixedVar;
+                TorqueVariables.Min = minVar;
+                TorqueVariables.Max = maxVar;
+                break;
+            default:
+                MassVariables.RandomizedSetting = setting;
+                MassVariables.Fixed = fixedVar;
+                MassVariables.Min = minVar;
+                MassVariables.Max = maxVar;
+                break;
+        }
     }
 
+
+    private RandomizedSetting GetEnumFromString(string enumName) {
+        if (enumName == "BetweenTwoConstants") return RandomizedSetting.BetweenTwoConstants;
+        else return RandomizedSetting.Fixed;
+    }
+
+    public float GetForce() {
+        if (ForceVariables.RandomizedSetting == RandomizedSetting.Fixed) {
+            return ForceVariables.Fixed;
+        }
+        else {
+            return ForceVariables.Min > ForceVariables.Max || ForceVariables.Max < ForceVariables.Min
+                ? ForceVariables.Min
+                : Random.Range(ForceVariables.Min, ForceVariables.Max);
+        }
+    }
+
+    public AsteroidVariables GetForceVars() => ForceVariables;
+
+    public float GetSize() {
+        if (SizeVariables.RandomizedSetting == RandomizedSetting.Fixed) {
+            return SizeVariables.Fixed;
+        }
+        else {
+            return SizeVariables.Min > SizeVariables.Max || SizeVariables.Max < SizeVariables.Min
+                ? SizeVariables.Min
+                : Random.Range(SizeVariables.Min, SizeVariables.Max);
+        }
+    }
+
+    public AsteroidVariables GetSizeVars() => SizeVariables;
+
+    public float GetTorque() {
+        if (TorqueVariables.RandomizedSetting == RandomizedSetting.Fixed) {
+            return TorqueVariables.Fixed;
+        }
+        else {
+            return TorqueVariables.Min > TorqueVariables.Max || TorqueVariables.Max < TorqueVariables.Min
+                ? TorqueVariables.Min
+                : Random.Range(TorqueVariables.Min, TorqueVariables.Max);
+        }
+    }
+
+    public AsteroidVariables GetTorqueVars() => TorqueVariables;
+
+
+    public float GetMass() {
+        if (MassVariables.RandomizedSetting == RandomizedSetting.Fixed) {
+            return MassVariables.Fixed;
+        }
+        else {
+            return MassVariables.Min > MassVariables.Max || MassVariables.Max < MassVariables.Min
+                ? MassVariables.Min
+                : Random.Range(MassVariables.Min, MassVariables.Max);
+        }
+    }
+
+
+    public AsteroidVariables GetMassVars() => MassVariables;
 }
 
-
+public enum AsteroidSettingType {
+    Force,
+    Size,
+    Torque,
+    Mass
+}

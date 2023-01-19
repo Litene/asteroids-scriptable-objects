@@ -2,7 +2,8 @@ using System;
 using UnityEngine;
 using UnityEngine.Pool;
 
-[CreateAssetMenu(fileName = "Shared Pool")] public class SharedPool : ScriptableObject { // todo:cleanup
+[CreateAssetMenu(fileName = "Shared Pool")]
+public class SharedPool : ScriptableObject { // todo:cleanup
     private ObjectPool<MonoBehaviour> _value;
     [SerializeField] private MonoBehaviour _prefab;
     [SerializeField] private bool _collisionCheck;
@@ -42,6 +43,7 @@ using UnityEngine.Pool;
         transform.rotation = Quaternion.identity;
         return mono;
     }
+
     public MonoBehaviour Get(Vector3 position) {
         ResetRot();
         _spawnPos = position;
@@ -64,7 +66,7 @@ using UnityEngine.Pool;
 
     private void ResetPos() => _spawnPos = Vector3.zero;
     private void ResetRot() => _spawnRot = Quaternion.identity;
-    
+
     //public void Release(MonoBehaviour behaviour) => _value.Release(behaviour);
     public void Release(Transform transform) {
         ResetPos(); // is this needed?
@@ -83,10 +85,13 @@ using UnityEngine.Pool;
     }
 
     public void Release(MonoBehaviour behaviour) {
+        Debug.Log("yo");
         ResetPos();
-        ResetRot();
+        ResetRot(); 
         _value.Release(behaviour);
-    } 
+       
+    }
+
     public void Dispose() => _value.Dispose();
     public void Clear() => _value.Clear();
     public int CountInactive() => _value.CountInactive;
@@ -96,6 +101,7 @@ using UnityEngine.Pool;
         var tempObj = Instantiate(_prefab.gameObject, _spawnPos, _spawnRot);
         return tempObj.TryGetComponent(out MonoBehaviour monoBehavior) ? monoBehavior : null;
     }
+
     private void OnObjectDestroy(MonoBehaviour obj) => Destroy(obj.gameObject);
     private void OnObjectRelease(MonoBehaviour obj) => obj.gameObject.SetActive(false);
 

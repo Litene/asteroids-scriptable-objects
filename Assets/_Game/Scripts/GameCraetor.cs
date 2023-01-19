@@ -88,6 +88,7 @@ public class GameCraetor : MonoBehaviour {
         _rotationPowerSO.SetValue(_rotationPower);
         _maxHealthSO.SetValue(_maxHealth);
         _shipMassSO.SetValue(_shipMass);
+        
     }
 
 }

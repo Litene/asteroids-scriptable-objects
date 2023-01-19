@@ -12,5 +12,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44ea2dcf89162c74a84da29d568be890, type: 3}
   m_Name: AsteroidSetting
   m_EditorClassIdentifier: 
-  _settings: {fileID: 11400000, guid: 66dc1af43da25224ea4e271685ca7908, type: 2}
-  readValue: 2
+  ForceVariables:
+    RandomizedSetting: 0
+    Fixed: 10
+    Min: 40
+    Max: 60
+  SizeVariables:
+    RandomizedSetting: 0
+    Fixed: 1
+    Min: 5
+    Max: 10
+  TorqueVariables:
+    RandomizedSetting: 1
+    Fixed: 42.2
+    Min: 1
+    Max: 1
+  MassVariables:
+    RandomizedSetting: 1
+    Fixed: 42.2
+    Min: 1
+    Max: 1
+  settings:
+  - RandomizedSetting: 0
+    Fixed: 10
+    Min: 40
+    Max: 60
+  - RandomizedSetting: 0
+    Fixed: 1
+    Min: 5
+    Max: 10
+  - RandomizedSetting: 1
+    Fixed: 42.2
+    Min: 1
+    Max: 1
+  - RandomizedSetting: 1
+    Fixed: 42.2
+    Min: 1
+    Max: 1

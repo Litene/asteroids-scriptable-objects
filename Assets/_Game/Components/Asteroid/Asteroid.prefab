@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _onAsteroidDestroyed: {fileID: 11400000, guid: 6194a1f60d68f9f4da5519ce74b63a58, type: 2}
-  _setting: {fileID: 11400000, guid: 9e8073795add68b49b040ac2aee65990, type: 2}
+  _setting: {fileID: 11400000, guid: ed55eb5ee43c2c0459dfa1fb9406e2ad, type: 2}
   _pool: {fileID: 11400000, guid: 128cbef072e17474eac21ba55df0553a, type: 2}
   _shape: {fileID: 1524412162417054026}
 --- !u!50 &1784223117350305362

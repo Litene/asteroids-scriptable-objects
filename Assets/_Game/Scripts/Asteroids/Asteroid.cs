@@ -10,7 +10,8 @@ namespace Asteroids {
     public class Asteroid : MonoBehaviour {
         [SerializeField] private ScriptableEventInt _onAsteroidDestroyed;
 
-        [Header("Config:")] [SerializeField] private AsteroidSetting _setting;
+        [Header("Config:")] 
+        [SerializeField] private AsteroidSetting _setting;
         [SerializeField] private SharedPool _pool;
 
         [Header("References:")] [SerializeField]
@@ -19,25 +20,19 @@ namespace Asteroids {
         private Rigidbody2D _rigidbody;
         private Vector3 _direction;
         private int _instanceId;
-        
         private void Awake() {
             _rigidbody = GetComponent<Rigidbody2D>();
             _instanceId = GetInstanceID();
         }
 
-        // private void OnEnable() {
-        //     SetDirection();
-        //     AddForce();
-        //     AddTorque();
-        //     SetSize();
-        // }
-
-        private void Start() {
+        private void OnEnable() {
             SetDirection();
             AddForce();
             AddTorque();
             SetSize();
+            SetMass();
         }
+
 
         private void OnTriggerEnter2D(Collider2D other) {
             if (string.Equals(other.tag, "Laser")) {
@@ -47,7 +42,8 @@ namespace Asteroids {
         
         private void HitByLaser() {
             _onAsteroidDestroyed.Raise(_instanceId);
-            _pool.Release(this);
+            Destroy(this.gameObject);
+            //_pool.Release(this);
         }
         
 
@@ -76,7 +72,6 @@ namespace Asteroids {
         }
 
         private void AddForce() {
-            //var force = Random.Range(_minForce, _maxForce);
             _rigidbody.AddForce(_direction * _setting.GetForce(), ForceMode2D.Impulse);
         }
 
@@ -93,6 +88,11 @@ namespace Asteroids {
         private void SetSize() {
             var size = _setting.GetSize();
             _shape.localScale = new Vector3(size, size, 0f);
+        }
+        
+        private void SetMass() {
+            var mass = _setting.GetMass();
+            _rigidbody.mass = mass;
         }
     }
 }

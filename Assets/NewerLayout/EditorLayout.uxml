@@ -2,37 +2,29 @@
     <Style src="project://database/Assets/GameEditorLayout/EditorLayout.uss?fileID=7433441132597879392&amp;guid=3ccbba4e4cf6ffc42accc5ea9dd4835b&amp;type=3#EditorLayout" />
     <ui:Label tabindex="-1" text="Game Editor" display-tooltip-when-elided="true" style="font-size: 24px; -unity-text-align: upper-center;" />
     <ui:VisualElement name="Editor" view-data-key="ParentKey" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: row; -unity-background-image-tint-color: rgb(255, 255, 255); -unity-text-outline-color: rgba(0, 0, 0, 0); flex-basis: 90%; flex-shrink: 0; width: auto;">
-        <ui:VisualElement name="LeftCollumn" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); min-width: auto; min-height: auto; max-width: none; width: 50%;">
-            <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); min-width: auto; min-height: 20%; -unity-text-outline-width: 0; -unity-text-outline-color: rgba(0, 0, 0, 0); text-shadow: 0 0 0 rgba(0, 0, 0, 0); border-left-color: rgba(0, 0, 0, 0); border-right-color: rgba(0, 0, 0, 0); border-top-color: rgba(0, 0, 0, 0); border-bottom-color: rgba(0, 0, 0, 0); border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; border-top-left-radius: 0; border-bottom-left-radius: 0; border-top-right-radius: 0; border-bottom-right-radius: 0; padding-left: 1px; padding-right: 1px; padding-top: 1px; padding-bottom: 1px; margin-left: 4px; margin-right: 4px; margin-top: 4px; margin-bottom: 4px; height: auto; max-height: 30%;">
+        <ui:VisualElement name="LeftCollumn" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); min-width: 45%; min-height: auto; max-width: 45%; width: 50%;">
+            <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); min-width: auto; min-height: auto; -unity-text-outline-width: 0; -unity-text-outline-color: rgba(0, 0, 0, 0); text-shadow: 0 0 0 rgba(0, 0, 0, 0); border-left-color: rgba(0, 0, 0, 0); border-right-color: rgba(0, 0, 0, 0); border-top-color: rgba(0, 0, 0, 0); border-bottom-color: rgba(0, 0, 0, 0); border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; border-top-left-radius: 0; border-bottom-left-radius: 0; border-top-right-radius: 0; border-bottom-right-radius: 0; padding-left: 1px; padding-right: 1px; padding-top: 1px; padding-bottom: 1px; margin-left: 4px; margin-right: 4px; margin-top: 4px; margin-bottom: 4px; height: auto; max-height: none; -unity-background-image-tint-color: rgb(255, 255, 255);">
                 <ui:Label tabindex="-1" text="Ship" display-tooltip-when-elided="true" name="Ship" style="font-size: 20px; -unity-text-align: upper-center;" />
-                <ui:Label tabindex="-1" text="Hull&#10;" display-tooltip-when-elided="true" name="Hull" style="font-size: 16px;" />
-                <uie:ColorField label="Ship Color" value="RGBA(0.000, 1.000, 1.000, 1.000)" />
+                <ui:Label tabindex="-1" text="Hull&#10;" display-tooltip-when-elided="true" name="Hull" style="font-size: 16px; -unity-text-align: upper-center;" />
+                <uie:ColorField label="Ship Color" value="RGBA(0.000, 1.000, 1.000, 1.000)" binding-path="ShipColor" />
                 <ui:Slider picking-mode="Ignore" label="Throttle Power" value="42" high-value="10" show-input-field="true" binding-path="ThrottlePower" name="ThrottlePower" style="align-items: flex-end;" />
                 <ui:Slider picking-mode="Ignore" label="Rotation Power" value="42" high-value="10" show-input-field="true" binding-path="RotationPower" />
             </ui:VisualElement>
-            <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); min-width: auto; min-height: 15%; max-height: 20%;">
-                <ui:Label tabindex="-1" text="Engine&#10;" display-tooltip-when-elided="true" name="Engine" style="font-size: 16px;" />
-                <ui:SliderInt picking-mode="Ignore" label="Starting Health" value="42" high-value="100" binding-path="StartingHealth" />
+            <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); min-width: auto; min-height: auto; max-height: none;">
+                <ui:Label tabindex="-1" text="Engine&#10;" display-tooltip-when-elided="true" name="Engine" style="font-size: 16px; -unity-text-align: upper-center;" />
+                <ui:SliderInt picking-mode="Ignore" label="Starting Health" value="42" high-value="100" binding-path="StartingHealth" show-input-field="true" />
                 <ui:Slider picking-mode="Ignore" label="Ship Mass" value="42" high-value="100" show-input-field="true" binding-path="ShipMass" />
                 <uie:PropertyField binding-path="_asteroidSetting" />
             </ui:VisualElement>
-            <ui:Label tabindex="-1" text="Generic&#10;" display-tooltip-when-elided="true" name="Engine" style="font-size: 16px;" />
-            <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); min-height: auto; min-width: auto; max-height: 20px; flex-direction: row; align-self: auto; justify-content: flex-start;">
-                <ui:Toggle label="Invert Controls" binding-path="InvertControls" />
-                <ui:Toggle label="Cheat Mode" binding-path="CheatMode" />
+            <ui:Label tabindex="-1" text="Generic&#10;" display-tooltip-when-elided="true" name="Engine" style="font-size: 16px; -unity-text-align: upper-center;" />
+            <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); min-height: 5%; min-width: auto; max-height: 5%; flex-direction: row; align-self: auto; justify-content: center; align-items: stretch;">
+                <ui:Toggle label="Invert Controls" binding-path="InvertControls" style="margin-right: 3px;" />
+                <ui:Toggle label="Cheat Mode" binding-path="CheatMode" style="margin-right: 3px;" />
+                <ui:Toggle label="Hold To Shoot" binding-path="HoldToShoot" style="margin-right: 3px;" />
             </ui:VisualElement>
-            <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: row; max-height: 20px; margin-bottom: 0;">
-                <ui:Toggle label="Toggle" />
-                <ui:Toggle label="Toggle" />
-            </ui:VisualElement>
-            <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); align-items: auto; justify-content: space-around;">
-                <ui:TextField picking-mode="Ignore" value="Generating Game Settings saves Asteroid Settings!" focusable="false" password="false" readonly="true" multiline="true" style="justify-content: space-between; height: auto; width: auto; font-size: 16.15px; -unity-text-align: middle-center; align-items: stretch; align-self: stretch; padding-left: 4px; padding-right: 4px; padding-top: 4px; padding-bottom: 4px; margin-top: 5px; margin-right: 10px; margin-left: 10px; text-overflow: clip; white-space: nowrap; min-height: 100%;" />
-            </ui:VisualElement>
-            <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); min-height: 20%; min-width: auto; max-height: 20%; justify-content: space-around; align-items: auto; align-self: auto; flex-direction: column; flex-basis: auto; position: relative; bottom: 0; margin-left: 15px; margin-right: 15px; top: auto; margin-top: 0;">
-                <ui:Button text="Generate Game Settings" display-tooltip-when-elided="true" focusable="true" name="Generate" style="max-height: 100%; min-height: 80%; font-size: 20px; color: rgb(253, 253, 253); background-color: rgb(45, 61, 103); border-top-left-radius: 30px; border-bottom-left-radius: 30px; border-top-right-radius: 30px; border-bottom-right-radius: 30px; -unity-background-image-tint-color: rgb(89, 42, 42); -unity-background-scale-mode: stretch-to-fill; border-left-width: 5px; border-right-width: 5px; border-top-width: 5px; border-bottom-width: 5px; margin-top: -3px; align-items: auto; justify-content: space-between; align-self: stretch; margin-right: 3px;" />
-            </ui:VisualElement>
+            <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);" />
         </ui:VisualElement>
-        <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); max-width: none; min-width: auto; width: auto;">
+        <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); max-width: 55%; min-width: 55%; width: auto;">
             <ui:Label tabindex="-1" text="Asteroids" display-tooltip-when-elided="true" style="font-size: 20px; -unity-text-align: upper-center;" />
             <ui:VisualElement name="ButtonVisualElements" view-data-key="ButtonVisualElements" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: row; min-width: auto; min-height: auto; max-height: 20px;">
                 <uie:ObjectField label="Asteroid Setting" type="AsteroidSetting, Assembly-CSharp" allow-scene-objects="false" name="AsteroidSettingField" binding-path="_asteroidSetting" style="justify-content: flex-start; visibility: visible; overflow: hidden; align-items: stretch; align-self: auto;" />
@@ -42,30 +34,34 @@
             </ui:VisualElement>
             <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
                 <ui:Label tabindex="-1" text="Force setting" display-tooltip-when-elided="true" />
-                <ui:EnumField label="Randomize" type="UnityEngine.TextAlignment, UnityEngine.TextRenderingModule" value="Center" binding-path="ForceRandomize" name="ForceRandom" />
+                <ui:EnumField label="Randomize" type="RandomizedSetting, Assembly-CSharp" binding-path="ForceRandomize" name="ForceRandom" />
                 <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); min-height: auto; min-width: auto;">
-                    <ui:FloatField label="Fixed" value="42.2" binding-path="ForceSettingFixed" name="ForceFixed" style="height: 18px;" />
-                    <ui:FloatField label="Min" value="42.2" binding-path="ForceSettingMin" name="ForceMin" style="height: 18px;" />
+                    <ui:FloatField label="Fixed" value="42.2" binding-path="ForceSettingFixed" name="ForceFixed" style="height: 18px; display: none;" />
+                    <ui:FloatField label="Fixed" value="42.2" binding-path="ForceSettingFixed" name="ForceFixedFiller" focusable="false" style="height: 18px; display: none; visibility: hidden;" />
+                    <ui:FloatField label="Min" value="42.2" binding-path="ForceSettingMin" name="ForceMin" style="height: 18px; visibility: visible; overflow: hidden; display: flex;" />
                     <ui:FloatField label="Max" value="42.2" binding-path="ForceSettingMax" name="ForceMax" />
                 </ui:VisualElement>
                 <ui:Label tabindex="-1" text="Size Setting" display-tooltip-when-elided="true" />
-                <ui:EnumField label="Randomize" type="UnityEngine.TextAlignment, UnityEngine.TextRenderingModule" value="Center" binding-path="SizeRandomize" name="SizeRandom" />
+                <ui:EnumField label="Randomize" type="RandomizedSetting, Assembly-CSharp" binding-path="SizeRandomize" name="SizeRandom" />
                 <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); min-height: auto; min-width: auto;">
-                    <ui:FloatField label="Fixed" value="42.2" binding-path="SizeSettingFixed" name="SizeFixed" />
-                    <ui:FloatField label="Min" value="42.2" binding-path="SizeSettingMin" name="SizeMin" style="height: 20px;" />
+                    <ui:FloatField label="Fixed" value="42.2" binding-path="SizeSettingFixed" name="SizeFixed" style="display: none;" />
+                    <ui:FloatField label="Fixed" value="42.2" binding-path="SizeSettingFixed" name="SizeFixedFiller" focusable="false" style="display: none; visibility: hidden;" />
+                    <ui:FloatField label="Min" value="42.2" binding-path="SizeSettingMin" name="SizeMin" style="height: auto;" />
                     <ui:FloatField label="Max" value="42.2" binding-path="SizeSettingMax" name="SizeMax" />
                 </ui:VisualElement>
                 <ui:Label tabindex="-1" text="Torque Setting" display-tooltip-when-elided="true" />
-                <ui:EnumField label="Randomize" type="UnityEngine.TextAlignment, UnityEngine.TextRenderingModule" value="Center" binding-path="TorqueRandomize" name="TorqueRandom" />
+                <ui:EnumField label="Randomize" type="RandomizedSetting, Assembly-CSharp" binding-path="TorqueRandomize" name="TorqueRandom" />
                 <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
-                    <ui:FloatField label="Fixed" value="42.2" binding-path="TorqueSettingFixed" name="TorqueFixed" />
+                    <ui:FloatField label="Fixed" value="42.2" binding-path="TorqueSettingFixed" name="TorqueFixed" style="display: none;" />
+                    <ui:FloatField label="Fixed" value="42.2" binding-path="TorqueSettingFixed" name="TorqueFixedFiller" focusable="false" style="display: none; visibility: hidden;" />
                     <ui:FloatField label="Min" value="42.2" binding-path="TorqueSettingMin" name="TorqueMin" />
                     <ui:FloatField label="Max" value="42.2" binding-path="TorqueSettingMax" name="TorqueMax" />
                 </ui:VisualElement>
                 <ui:Label tabindex="-1" text="Mass Setting" display-tooltip-when-elided="true" />
-                <ui:EnumField label="Randomize" type="UnityEngine.TextAlignment, UnityEngine.TextRenderingModule" value="Center" binding-path="MassRandomize" name="MassRandom" />
+                <ui:EnumField label="Randomize" type="RandomizedSetting, Assembly-CSharp" binding-path="MassRandomize" name="MassRandom" />
                 <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); min-height: auto; min-width: auto;">
-                    <ui:FloatField label="Fixed" value="42.2" binding-path="MassSettingFixed" name="MassFixed" />
+                    <ui:FloatField label="Fixed" value="42.2" binding-path="MassSettingFixed" name="MassFixed" style="overflow: hidden; display: none;" />
+                    <ui:FloatField label="Fixed" value="42.2" binding-path="MassSettingFixed" name="MassFixedFiller" focusable="false" style="overflow: hidden; display: none; visibility: hidden;" />
                     <ui:FloatField label="Min" value="42.2" binding-path="MassSettingMin" name="MassMin" />
                     <ui:FloatField label="Max" value="42.2" binding-path="MassSettingMax" name="MassMax" />
                 </ui:VisualElement>
