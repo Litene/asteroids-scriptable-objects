@@ -40,4 +40,22 @@ How: Probably the best user interface you have seen, the user interface totally 
 Scripts: Editor Window   
 
 * Add functionality to the tool which makes it more reusable, like exposing methods or properties to the user that are not hard-coded.    
-How: 
+did not aim to complete  
+Why: The restriction of the assignment  
+Scripts: None  
+
+* Show evidence of user testing and iteration based on feedback.  
+aimed to complete 
+How: This is an extremely hard one to proove, but I've walked around the classroom disuccsing and displaying my tool at several occasions.
+I hope this is something you saw. The following is three changed made due to feedback, lots more were added due to the fact that I believe that
+feedback is vital to the creative process.  
+Changes due to feedback:   
+1) I was about to make an inspector but Joakim suggested the it would be cleaner and better with a editor window.  
+2) Have a set size for the window was suggested by Alice so that the buttons wouldn't jump around when resizing.  
+3) Have button for save load funcationality was suggested by Carl to make it more intuitive.  
+Scripts: GameCreatorEditor, Editor window 
+
+* Make the tool a Unity package so it can be easily shared with others, document the package and all of its functions in an easy-to-understand way
+did not aim to complete  
+Why: Time contraints of the assignment  
+Scripts: None
