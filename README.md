@@ -6,7 +6,7 @@ Grading Criterias
 an understanding of the benefits and limitations of using ScriptableObjectsin Unity projects. 
 They must also be able to present and explain their work in a clear and concise manner.  
 Aimed to complete  
-How: I used Scriptable objects in the project both selfmade and premade. A functional editor window is deployed, found under tools/game editor (in the top)
+How: I used Scriptable objects in the project both selfmade and premade. A functional editor window is deployed, found under tools/game editor (in the top)  
 scripts: GameCreatorEditor, Asteroid, Hull, Engine  
 
 * Utilize advanced features of Unity editor tools, such as custom inspectors or editors,  
